@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <section style={{display:"grid",gap:16}}>
       <h1 style={{fontSize:36,margin:0}}>HOTMESS RADIO</h1>
-      <p style={{opacity:.85}}>Streaming 24/7. Hand‑in‑Hand is the only place to land.</p>
+      <p style={{opacity:.85}}>Streaming 24/7. Hand-in-Hand is the only place to land.</p>
       <audio controls preload="none" style={{width:"100%",marginTop:8}}>
         <source src={stream} type="audio/mpeg" />
         Your browser does not support audio.

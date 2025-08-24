@@ -1,9 +1,6 @@
 set -e
-
-# folders
 mkdir -p app/radio app/api/schedule components data public
 
-# package + config
 cat > package.json <<'JSON'
 {
   "name": "hotmess-vercel-starter-plu",
@@ -57,7 +54,6 @@ node_modules
 .env*
 TXT
 
-# base pages
 cat > app/layout.tsx <<'TSX'
 export const metadata = { title: "HOTMESS Radio", description: "UK’s unapologetic queer 24/7 stream." };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -83,23 +79,11 @@ export default function Home() {
 }
 TSX
 
-# data + api
 cat > data/schedule.json <<'JSON'
 {
-  "Wake the Mess": {
-    "schedule": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "time": "9AM–11AM",
-    "host": "Maxx",
-    "ai_voices": {
-      "Weather Segment": "11 Labs – Drag queen persona with dramatic highs and comedic sass",
-      "Maxx Memo": "11 Labs – Warm gym-bro gossip tone",
-      "Voice Note Roulette": "Hume – Sultry late-night whisper",
-      "Giveaway Stinger": "11 Labs – Overexcited gay gameshow host"
-    },
-    "music_triggers": {
-      "09:45": "High-energy club anthems, queer house and circuit stompers",
-      "10:40": "Hard house, euphoric techno and morning bangers"
-    },
+  "Wake the Mess": { "schedule": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "time": "9AM–11AM", "host": "Maxx",
+    "ai_voices": { "Weather Segment": "11 Labs – Drag queen persona with dramatic highs and comedic sass", "Maxx Memo": "11 Labs – Warm gym-bro gossip tone", "Voice Note Roulette": "Hume – Sultry late-night whisper", "Giveaway Stinger": "11 Labs – Overexcited gay gameshow host" },
+    "music_triggers": { "09:45": "High-energy club anthems, queer house and circuit stompers", "10:40": "Hard house, euphoric techno and morning bangers" },
     "show_style": "High-energy club talk show. Messy, provocative and cheeky. Safe space for late risers and early freaks.",
     "daily_segments": [
       {"time": "09:00", "segment": "Intro stinger + Welcome from Maxx"},
@@ -112,15 +96,8 @@ cat > data/schedule.json <<'JSON'
       {"time": "10:55", "segment": "Outro sting + weekend promo"}
     ]
   },
-  "Dial-a-Daddy": {
-    "schedule": ["Monday", "Wednesday", "Friday"],
-    "time": "3PM–4PM",
-    "host": "Bruno",
-    "ai_voices": {
-      "Voice from the Void": "11 Labs – Haunted hotline/phone sex operator tone",
-      "Daddy Says": "11 Labs – Leather bar philosopher: dry, funny, short",
-      "Giveaway": "Hume – Flirty stinger with emotional nuance"
-    },
+  "Dial-a-Daddy": { "schedule": ["Monday","Wednesday","Friday"], "time": "3PM–4PM", "host": "Bruno",
+    "ai_voices": { "Voice from the Void": "11 Labs – Haunted hotline/phone sex operator tone", "Daddy Says": "11 Labs – Leather bar philosopher: dry, funny, short", "Giveaway": "Hume – Flirty stinger with emotional nuance" },
     "music_triggers": { "15:50": "Dirty electro ballads and cheeky afternoon throb beats" },
     "daily_segments": [
       {"time": "15:00", "segment": "Intro sting + Bruno sets the tone"},
@@ -130,19 +107,9 @@ cat > data/schedule.json <<'JSON'
       {"time": "15:50", "segment": "One final messy track before outro"}
     ]
   },
-  "Hand-in-Hand": {
-    "schedule": ["Sunday"],
-    "time": "2PM–6PM",
-    "host": "HNHS + rotating guests",
-    "ai_voices": {
-      "Check-in Trigger": "Hume – Soft therapeutic guide",
-      "Voice Notes": "Hume – Processed listener voicemails, emotional overlay",
-      "Product Talk": "Maxx (11 Labs) – Sex-positive but sincere"
-    },
-    "music_triggers": {
-      "15:00": "Downtempo queer ambient + dreamy tech",
-      "17:00": "Healing trance, soft techno, wave"
-    },
+  "Hand-in-Hand": { "schedule": ["Sunday"], "time": "2PM–6PM", "host": "HNHS + rotating guests",
+    "ai_voices": { "Check-in Trigger": "Hume – Soft therapeutic guide", "Voice Notes": "Hume – Processed listener voicemails, emotional overlay", "Product Talk": "Maxx (11 Labs) – Sex-positive but sincere" },
+    "music_triggers": { "15:00": "Downtempo queer ambient + dreamy tech", "17:00": "Healing trance, soft techno, wave" },
     "show_style": "Emotional and narrative core of the HOTMESS brand. A full-length Sunday show of music, conversation and community call-ins. Sex-positive and stigma-breaking. Safe but provocative.",
     "daily_segments": [
       {"time": "14:00", "segment": "Check-in Trigger + intro voice note"},
@@ -154,18 +121,9 @@ cat > data/schedule.json <<'JSON'
       {"time": "17:50", "segment": "Closing message + branded outro sting"}
     ]
   },
-  "Drive Time Mess": {
-    "schedule": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "time": "5PM–7PM",
-    "host": "Philip (you) + Two Guest Hosts",
-    "ai_voices": {
-      "Product Spotlight": "Maxx (11 Labs) – Promotional but cheeky",
-      "Giveaway": "11 Labs – Chaotic drag announcer"
-    },
-    "music_triggers": {
-      "17:25": "Funky electro-pop, queer rap, glam-synth",
-      "18:00": "Weekend bangers and emotional thumpers"
-    },
+  "Drive Time Mess": { "schedule": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "time": "5PM–7PM", "host": "Philip (you) + Two Guest Hosts",
+    "ai_voices": { "Product Spotlight": "Maxx (11 Labs) – Promotional but cheeky", "Giveaway": "11 Labs – Chaotic drag announcer" },
+    "music_triggers": { "17:25": "Funky electro-pop, queer rap, glam-synth", "18:00": "Weekend bangers and emotional thumpers" },
     "daily_segments": [
       {"time": "17:00", "segment": "Welcome from Philip + intro sting"},
       {"time": "17:10", "segment": "Roundtable mess topic of the day"},
@@ -175,20 +133,14 @@ cat > data/schedule.json <<'JSON'
       {"time": "18:55", "segment": "DJ teaser and outro sting"}
     ]
   },
-  "Guest DJ Takeovers": {
-    "schedule": ["Friday", "Saturday"],
-    "time": "7PM–11PM",
-    "rotation": ["Paul King", "Nick Denton", "Tony English", "John Henning"],
+  "Guest DJ Takeovers": { "schedule": ["Friday","Saturday"], "time": "7PM–11PM", "rotation": ["Paul King","Nick Denton","Tony English","John Henning"],
     "format": [
       {"time": "19:00", "segment": "Custom DJ Intro + branded VO (submitted or AI-enhanced)"},
       {"time": "20:00", "segment": "Radio Brain sting or DJ callout"},
       {"time": "Each Hour", "segment": "No interruptions. Just non-stop bangers. No Kylie. No camp."},
       {"time": "23:00", "segment": "HOTMESS sting fadeout or DJ custom outro"}
     ],
-    "music_triggers": {
-      "19:00–23:00": "Non-stop hard house, techno, filthy club, queer rave energy",
-      "After 23:00": "Seamless raw DJ sets with no voice breaks or pop inserts"
-    },
+    "music_triggers": { "19:00–23:00": "Non-stop hard house, techno, filthy club, queer rave energy", "After 23:00": "Seamless raw DJ sets with no voice breaks or pop inserts" },
     "notes": "After 11PM on weekends: uninterrupted mix mode continues with no camp breaks. DJs deliver branded intros/outros. Radio Brain maintains sonic cohesion."
   }
 }
@@ -202,7 +154,6 @@ export const revalidate = 0;
 export async function GET() { return NextResponse.json(schedule); }
 TS
 
-# UI component + radio page
 cat > components/Schedule.tsx <<'TSX'
 'use client';
 import { useEffect, useState } from "react";
@@ -212,7 +163,7 @@ type ScheduleData = Record<string, ShowDef>;
 export default function Schedule() {
   const [data, setData] = useState<ScheduleData | null>(null);
   const [err, setErr] = useState<string | null>(null);
-  useEffect(() => { fetch("/api/schedule", { cache: "no-store" }).then(r => r.json()).then(setData).catch(e => setErr(String(e))); }, []);
+  useEffect(() => { fetch("/api/schedule", { cache: "no-store" }).then(r => r.json()).then(setData).catch(e => setErr(String(e)); }, []);
   if (err) return <p style={{color:"#f66"}}>Failed to load schedule: {err}</p>;
   if (!data) return <p style={{opacity:.6}}>Loading schedule…</p>;
   const shows = Object.entries(data);
@@ -261,7 +212,7 @@ export default function Page() {
   return (
     <section style={{display:"grid",gap:16}}>
       <h1 style={{fontSize:36,margin:0}}>HOTMESS RADIO</h1>
-      <p style={{opacity:.85}}>Streaming 24/7. Hand‑in‑Hand is the only place to land.</p>
+      <p style={{opacity:.85}}>Streaming 24/7. Hand-in-Hand is the only place to land.</p>
       <audio controls preload="none" style={{width:"100%",marginTop:8}}>
         <source src={stream} type="audio/mpeg" />
         Your browser does not support audio.
@@ -273,7 +224,6 @@ export default function Page() {
 }
 TSX
 
-# robots + env example
 cat > public/robots.txt <<'TXT'
 User-agent: *
 Allow: /

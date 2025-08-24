@@ -6,7 +6,7 @@ type ScheduleData = Record<string, ShowDef>;
 export default function Schedule() {
   const [data, setData] = useState<ScheduleData | null>(null);
   const [err, setErr] = useState<string | null>(null);
-  useEffect(() => { fetch("/api/schedule", { cache: "no-store" }).then(r => r.json()).then(setData).catch(e => setErr(String(e))); }, []);
+  useEffect(() => { fetch("/api/schedule", { cache: "no-store" }).then(r => r.json()).then(setData).catch(e => setErr(String(e)); }, []);
   if (err) return <p style={{color:"#f66"}}>Failed to load schedule: {err}</p>;
   if (!data) return <p style={{opacity:.6}}>Loading schedule…</p>;
   const shows = Object.entries(data);
