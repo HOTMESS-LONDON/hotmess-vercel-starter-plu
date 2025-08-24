@@ -1,15 +1,33 @@
 'use client';
 import { useEffect, useState } from "react";
+
 type Day = "Monday"|"Tuesday"|"Wednesday"|"Thursday"|"Friday"|"Saturday"|"Sunday";
-type ShowDef = { schedule: Day[]; time: string; host?: string; rotation?: string[]; show_style?: string; daily_segments?: { time: string; segment: string }[]; };
+type ShowDef = {
+  schedule: Day[];
+  time: string;
+  host?: string;
+  rotation?: string[];
+  show_style?: string;
+  daily_segments?: { time: string; segment: string }[];
+};
 type ScheduleData = Record<string, ShowDef>;
+
 export default function Schedule() {
   const [data, setData] = useState<ScheduleData | null>(null);
   const [err, setErr] = useState<string | null>(null);
-  useEffect(() => { fetch("/api/schedule", { cache: "no-store" }).then(r => r.json()).then(setData).catch(e => setErr(String(e)); }, []);
+
+  useEffect(() => {
+    fetch("/api/schedule", { cache: "no-store" })
+      .then((r) => r.json())
+      .then(setData)
+      .catch((e) => setErr(String(e)));
+  }, []);
+
   if (err) return <p style={{color:"#f66"}}>Failed to load schedule: {err}</p>;
   if (!data) return <p style={{opacity:.6}}>Loading schedule…</p>;
+
   const shows = Object.entries(data);
+
   return (
     <section style={{display:"grid",gap:12}}>
       <h2 style={{fontSize:24,margin:"24px 0 0"}}>This Week on HOTMESS RADIO</h2>
