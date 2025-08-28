@@ -1,7 +1,6 @@
 'use client';
 import { useMemo } from "react";
 import Schedule from "../../components/Schedule";
-export const revalidate = 60;
 export default function Page() {
   const stream = useMemo(() => process.env.NEXT_PUBLIC_RADIOKING_STREAM_URL || "", []);
   return (
