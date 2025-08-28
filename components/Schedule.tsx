@@ -1,63 +1,103 @@
-'use client';
-import { useEffect, useState } from "react";
+'use client'
 
-type Day = "Monday"|"Tuesday"|"Wednesday"|"Thursday"|"Friday"|"Saturday"|"Sunday";
+import { useEffect, useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
+type Day = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'
 type ShowDef = {
-  schedule: Day[];
-  time: string;
-  host?: string;
-  rotation?: string[];
-  show_style?: string;
-  daily_segments?: { time: string; segment: string }[];
-};
-type ScheduleData = Record<string, ShowDef>;
+  schedule: Day[]
+  time: string
+  host?: string
+  rotation?: string[]
+  show_style?: string
+  daily_segments?: { time: string; segment: string }[]
+}
+type ScheduleData = Record<string, ShowDef>
 
 export default function Schedule() {
-  const [data, setData] = useState<ScheduleData | null>(null);
-  const [err, setErr] = useState<string | null>(null);
+  const [data, setData] = useState<ScheduleData | null>(null)
+  const [err, setErr] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch("/api/schedule", { cache: "no-store" })
+    fetch('/api/schedule', { cache: 'no-store' })
       .then((r) => r.json())
       .then(setData)
-      .catch((e) => setErr(String(e)));
-  }, []);
+      .catch((e) => setErr(String(e)))
+  }, [])
 
-  if (err) return <p style={{color:"#f66"}}>Failed to load schedule: {err}</p>;
-  if (!data) return <p style={{opacity:.6}}>Loading schedule…</p>;
+  if (err) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-red-400">Failed to load schedule: {err}</p>
+      </div>
+    )
+  }
 
-  const shows = Object.entries(data);
+  if (!data) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-muted-foreground">Loading schedule…</p>
+      </div>
+    )
+  }
+
+  const shows = Object.entries(data)
 
   return (
-    <section style={{display:"grid",gap:12}}>
-      <h2 style={{fontSize:24,margin:"24px 0 0"}}>This Week on HOTMESS RADIO</h2>
-      <div style={{display:"grid",gap:8}}>
+    <section className="space-y-6">
+      <h2 className="text-3xl font-bold text-center">This Week on HOTMESS RADIO</h2>
+      <div className="grid gap-4">
         {shows.map(([name, info]) => (
-          <article key={name} style={{background:"#121212",border:"1px solid #1E1E1E",borderRadius:16,padding:16}}>
-            <header style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",gap:12,flexWrap:"wrap"}}>
-              <h3 style={{margin:0,fontSize:18,letterSpacing:.2}}>{name}</h3>
-              <span style={{fontSize:13,opacity:.8}}>{info.time}</span>
-            </header>
-            <p style={{margin:"6px 0 10px",opacity:.8,fontSize:14}}>
-              {info.host ? <>Host: <strong>{info.host}</strong></> : info.rotation ? <>Rotation: <strong>{info.rotation.join(", ")}</strong></> : null}
-            </p>
-            <p style={{margin:"0 0 10px",opacity:.7,fontSize:13}}>Days: {info.schedule.join(" · ")}</p>
-            {info.daily_segments?.length ? (
-              <div style={{marginTop:8}}>
-                <div style={{fontSize:12,opacity:.8,marginBottom:4}}>Segments</div>
-                <ul style={{listStyle:"none",padding:0,margin:0,display:"grid",gap:4}}>
-                  {info.daily_segments.map((seg, i) => (
-                    <li key={i} style={{display:"grid",gridTemplateColumns:"80px 1fr",gap:12,alignItems:"baseline"}}>
-                      <code style={{opacity:.8,fontSize:12}}>{seg.time}</code>
-                      <span style={{fontSize:14}}>{seg.segment}</span>
-                    </li>
-                  ))}
-                </ul>
+          <Card key={name} className="hover:bg-card/80 transition-colors">
+            <CardHeader>
+              <div className="flex justify-between items-baseline gap-3 flex-wrap">
+                <CardTitle className="text-xl">{name}</CardTitle>
+                <span className="text-sm text-muted-foreground font-mono">
+                  {info.time}
+                </span>
               </div>
-            ) : null}
-          </article>
+              {(info.host || info.rotation) && (
+                <p className="text-sm text-muted-foreground">
+                  {info.host ? (
+                    <>
+                      Host: <strong className="text-foreground">{info.host}</strong>
+                    </>
+                  ) : info.rotation ? (
+                    <>
+                      Rotation: <strong className="text-foreground">{info.rotation.join(', ')}</strong>
+                    </>
+                  ) : null}
+                </p>
+              )}
+              <p className="text-xs text-muted-foreground">
+                Days: {info.schedule.join(' · ')}
+              </p>
+            </CardHeader>
+            {info.daily_segments?.length && (
+              <CardContent className="pt-0">
+                <div className="space-y-3">
+                  <div className="text-xs text-muted-foreground font-semibold uppercase tracking-wide">
+                    Segments
+                  </div>
+                  <div className="space-y-2">
+                    {info.daily_segments.map((seg, i) => (
+                      <div
+                        key={i}
+                        className="grid grid-cols-[auto_1fr] gap-3 items-baseline text-sm"
+                      >
+                        <code className="text-xs text-muted-foreground font-mono bg-secondary px-2 py-1 rounded">
+                          {seg.time}
+                        </code>
+                        <span className="text-muted-foreground">{seg.segment}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            )}
+          </Card>
         ))}
       </div>
     </section>
-  );
+  )
 }

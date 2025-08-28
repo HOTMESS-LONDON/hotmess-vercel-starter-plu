@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 11 11 11; /* #0B0B0B */
+    --foreground: 255 255 255; /* #ffffff */
+    --card: 18 18 18; /* #121212 */
+    --card-foreground: 255 255 255;
+    --popover: 18 18 18;
+    --popover-foreground: 255 255 255;
+    --primary: 255 83 0; /* #FF5300 - HOTMESS orange */
+    --primary-foreground: 11 11 11;
+    --secondary: 30 30 30; /* #1E1E1E */
+    --secondary-foreground: 255 255 255;
+    --muted: 30 30 30;
+    --muted-foreground: 163 163 163;
+    --accent: 30 30 30;
+    --accent-foreground: 255 255 255;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border: 30 30 30;
+    --input: 30 30 30;
+    --ring: 255 83 0;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Skip links for accessibility */
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md;
+}
+
+/* Focus styles */
+.focus-visible:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary;
+}
+
+/* Marquee animation */
+.marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom audio player styles */
+audio::-webkit-media-controls-panel {
+  background-color: hsl(var(--card));
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-pause-button {
+  background-color: hsl(var(--primary));
+  border-radius: 50%;
+}
