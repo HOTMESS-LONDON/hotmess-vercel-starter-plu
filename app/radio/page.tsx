@@ -1,18 +1,34 @@
-'use client';
-import { useMemo } from "react";
-import Schedule from "../../components/Schedule";
-export default function Page() {
-  const stream = useMemo(() => process.env.NEXT_PUBLIC_RADIOKING_STREAM_URL || "", []);
+import type { Metadata } from 'next'
+import RadioPlayer from '@/components/RadioPlayer'
+import Schedule from '@/components/Schedule'
+
+export const metadata: Metadata = {
+  title: 'Radio',
+  description: 'HOTMESS Radio - 24/7 streaming. Hand-in-Hand is the only place to land.',
+}
+
+export default function RadioPage() {
   return (
-    <section style={{display:"grid",gap:16}}>
-      <h1 style={{fontSize:36,margin:0}}>HOTMESS RADIO</h1>
-      <p style={{opacity:.85}}>Streaming 24/7. Hand-in-Hand is the only place to land.</p>
-      <audio controls preload="none" style={{width:"100%",marginTop:8}}>
-        <source src={stream} type="audio/mpeg" />
-        Your browser does not support audio.
-      </audio>
-      <p style={{fontSize:12,opacity:.6}}>Stream URL: {stream ? stream : "not configured"}</p>
-      <Schedule />
-    </section>
-  );
+    <div className="space-y-12">
+      {/* Hero Section */}
+      <section className="text-center space-y-6">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter">
+          RADIO
+        </h1>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Streaming 24/7. Hand-in-Hand is the only place to land.
+        </p>
+      </section>
+
+      {/* Radio Player */}
+      <section className="max-w-2xl mx-auto">
+        <RadioPlayer />
+      </section>
+
+      {/* Schedule */}
+      <section>
+        <Schedule />
+      </section>
+    </div>
+  )
 }
