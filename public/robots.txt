@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://hotmess-ldn.vercel.app/sitemap.xml
