@@ -258,6 +258,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Discussions**: [GitHub Discussions](https://github.com/HOTMESS-LONDON/hotmess-vercel-starter-plu/discussions)
 - **Community**: Join our Telegram rooms (see `/rooms` page)
 
+## 📚 Documentation
+
+- **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to the project
+- **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community guidelines and standards
+- **[Architecture Guide](ARCHITECTURE.md)** - Project structure and technical decisions
+- **[GitHub Copilot Guide](.github/COPILOT.md)** - Best practices for using Copilot with this codebase
+
 ## 🎯 Next Steps
 
 - [ ] Connect live RadioKing "now playing" endpoint

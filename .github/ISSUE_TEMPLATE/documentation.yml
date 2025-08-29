@@ -1,0 +1,56 @@
+---
+name: Documentation
+about: Improvements or fixes to documentation
+title: '[DOCS] '
+labels: ['documentation']
+assignees: ''
+---
+
+## 📚 Documentation Issue
+
+## 📋 Type of Documentation Issue
+
+- [ ] Missing documentation
+- [ ] Incorrect documentation
+- [ ] Outdated documentation
+- [ ] Unclear/confusing documentation
+- [ ] Typo/grammar fix
+- [ ] Other: ___________
+
+## 📍 Location
+
+Where is the documentation issue located?
+- [ ] README.md
+- [ ] CONTRIBUTING.md
+- [ ] Code comments
+- [ ] API documentation
+- [ ] Setup/installation guide
+- [ ] Other: ___________
+
+## 🔍 Current State
+
+Describe what the current documentation says or what's missing.
+
+## ✨ Suggested Improvement
+
+Describe what the documentation should say or what should be added.
+
+## 👥 Target Audience
+
+Who would benefit from this documentation improvement?
+- [ ] New contributors
+- [ ] Experienced developers
+- [ ] End users
+- [ ] Community members
+- [ ] Other: ___________
+
+## 📚 Additional Context
+
+Add any other context, links, or references that would help improve the documentation.
+
+## ✅ Checklist
+
+- [ ] I have searched existing issues to ensure this is not a duplicate
+- [ ] I have clearly identified the documentation issue
+- [ ] I have provided suggestions for improvement
+- [ ] I have considered the target audience

@@ -1,0 +1,69 @@
+---
+name: Feature Request
+about: Suggest an idea for this project
+title: '[FEATURE] '
+labels: ['enhancement']
+assignees: ''
+---
+
+## 🚀 Feature Description
+
+A clear and concise description of the feature you'd like to see implemented.
+
+## 🎯 Problem Statement
+
+Is your feature request related to a problem? Please describe.
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+
+## 💡 Proposed Solution
+
+Describe the solution you'd like
+A clear and concise description of what you want to happen.
+
+## 🔄 Alternatives Considered
+
+Describe alternatives you've considered
+A clear and concise description of any alternative solutions or features you've considered.
+
+## 📊 User Impact
+
+Who would benefit from this feature and how?
+- [ ] Radio listeners
+- [ ] Content creators
+- [ ] Community members
+- [ ] Developers/Contributors
+- [ ] Other: ___________
+
+## 🎨 Design Considerations
+
+If applicable, describe any design or UX considerations:
+- Accessibility requirements
+- Mobile responsiveness
+- Integration with existing features
+- Performance implications
+
+## 🛠️ Technical Considerations
+
+If you have technical insights, please share:
+- Suggested implementation approach
+- Potential challenges
+- Required dependencies
+- Testing considerations
+
+## 📸 Mockups/Examples
+
+If applicable, add mockups, wireframes, or examples of similar features.
+
+## 🎯 Acceptance Criteria
+
+What would constitute a successful implementation of this feature?
+- [ ] Criterion 1
+- [ ] Criterion 2
+- [ ] Criterion 3
+
+## ✅ Checklist
+
+- [ ] I have searched existing issues to ensure this is not a duplicate
+- [ ] I have provided a clear description of the requested feature
+- [ ] I have explained the problem this feature would solve
+- [ ] I have considered the impact on different user groups
