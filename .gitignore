@@ -12,3 +12,4 @@ yarn-debug.log
 .idea
 *.local
 *.swp
+tsconfig.tsbuildinfo
