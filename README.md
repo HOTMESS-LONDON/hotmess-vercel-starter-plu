@@ -96,6 +96,30 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 | `pnpm typecheck` | Check TypeScript types    |
 | `pnpm test`      | Run tests in watch mode   |
 | `pnpm test:ci`   | Run tests with coverage   |
+| `pnpm probe`     | Asset probe (see below)   |
+
+### Asset Probing for 404 Prevention
+
+The `probe` script helps prevent broken assets in production by checking all linked resources:
+
+```bash
+# Check a deployed site for broken assets
+pnpm probe https://your-site.com
+
+# Check local development site
+pnpm probe http://localhost:3000
+
+# Or run directly
+node scripts/hm-probe.mjs https://your-site.com
+```
+
+The probe script:
+
+- Fetches HTML from the target URL
+- Extracts all asset references (images, stylesheets, scripts, Open Graph images, etc.)
+- Validates each asset is accessible (returns 2xx status)
+- Reports any 404s or network errors
+- Exits with code 1 if errors are found (suitable for CI/CD)
 
 ## 🧪 Testing
 
@@ -164,6 +188,18 @@ The project includes GitHub Actions workflows:
   - Testing with Vitest
   - Building the application
 - **Automatic Deployment**: Via Vercel integration
+
+### Asset Validation in CI/CD
+
+After deployment, you can add asset validation to your workflow:
+
+```yaml
+# .github/workflows/post-deploy.yml
+- name: Validate deployed assets
+  run: pnpm probe https://your-deployed-site.com
+```
+
+This ensures all assets are accessible and prevents 404s in production.
 
 ## 🤝 Contributing
 
