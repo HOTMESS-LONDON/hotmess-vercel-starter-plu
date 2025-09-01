@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:ci": "vitest run",
-    "prepare": "husky"
+    "prepare": "husky",
+    "probe": "node scripts/hm-probe.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
