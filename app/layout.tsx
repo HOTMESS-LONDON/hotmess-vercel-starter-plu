@@ -1,5 +1,8 @@
 import './globals.css'
 import ClientLayout from './client-layout'
+import AgeGate from '@/components/AgeGate'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -23,16 +26,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark">
       <body className="min-h-screen bg-background font-sans antialiased">
-        <ClientLayout>
-          <a href="#main-content" className="skip-link">
-            Skip to main content
-          </a>
-          <div className="relative flex min-h-screen flex-col">
-            <main id="main-content" className="flex-1">
-              <div className="container mx-auto max-w-4xl px-4 py-16">{children}</div>
-            </main>
-          </div>
-        </ClientLayout>
+        <AgeGate>
+          <ClientLayout>
+            <a href="#main-content" className="skip-link">
+              Skip to main content
+            </a>
+            <div className="relative flex min-h-screen flex-col">
+              <Header />
+              <main id="main-content" className="flex-1">
+                <div className="container mx-auto max-w-4xl px-4 py-16">{children}</div>
+              </main>
+              <Footer />
+            </div>
+          </ClientLayout>
+        </AgeGate>
       </body>
     </html>
   )
