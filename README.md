@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HOTMESS London Vercel Starter
 
-## Getting Started
+Unified Next.js 14 + Vercel + TypeScript + TailwindCSS starter for HOTMESS London projects.
 
-First, run the development server:
+## 🛠️ Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: TailwindCSS + Framer Motion
+- **UI Components**: shadcn/ui + Lucide React
+- **Package Manager**: pnpm
+- **Testing**: Vitest + React Testing Library
+- **Linting**: ESLint + Prettier
+- **Hooks**: Husky + lint-staged + commitlint
+- **CI/CD**: GitHub Actions
+- **Deployment**: Vercel
+
+## 📁 Project Structure
+
+```
+├── app/                   # Next.js App Router pages
+│   ├── (routes)/         # Page components
+│   ├── api/              # API routes
+│   ├── globals.css       # Global styles
+│   └── layout.tsx        # Root layout
+├── components/           # Reusable components
+│   ├── ui/               # shadcn/ui components
+│   ├── RadioPlayer.tsx   # Custom radio player
+│   └── Schedule.tsx      # Schedule component
+├── lib/                  # Utility functions
+├── test/                 # Test files
+├── data/                 # Static data files
+└── public/               # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧪 Testing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The project includes comprehensive test coverage:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Run tests in watch mode
+pnpm test
 
-## Learn More
+# Run tests with coverage
+pnpm test:ci
 
-To learn more about Next.js, take a look at the following resources:
+# Run specific test file
+pnpm test RadioPlayer.test.tsx
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tests cover:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Component functionality and accessibility
+- API endpoints
+- User interactions
+- Error handling
 
-## Deploy on Vercel
+## 🎨 Design System
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The app uses a custom design system built on TailwindCSS:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Colors**: Custom CSS variables for theming
+- **Typography**: System fonts with careful hierarchy
+- **Components**: shadcn/ui for consistent UI elements
+- **Responsive**: Mobile-first responsive design
+- **Accessibility**: WCAG compliant color contrast and focus states
+
+## 🖇️ Contributing
+
+We follow conventional commits and have pre-commit hooks set up:
+
+```bash
+# Stage your changes
+git add .
+
+# Commit with conventional commit format
+git commit -m "feat: add new radio feature"
+
+# Push to your branch
+git push origin feature/your-feature
+```
+
+### Commit Types
+
+- `feat:` New features
+- `fix:` Bug fixes
+- `docs:` Documentation updates
+- `style:` Code style changes
+- `refactor:` Code refactoring
+- `test:` Test additions/updates
+- `chore:` Maintenance tasks
